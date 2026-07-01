@@ -48,6 +48,9 @@ a{color:inherit;text-decoration:none}
 [data-img="ring2"]{background-image:url(assets/ring2.jpg)}
 [data-img="whydiagram"]{background-image:url(assets/whydiagram.jpg);background-color:transparent}
 [data-img="sneaker"]{background-image:url(assets/sneaker.jpg)}
+[data-img="perfumebg"]{background-image:url(assets/perfumebg.jpg);background-position:right center}
+[data-img="underkeybg"]{background-image:url(assets/underkeybg.jpg);background-position:right center}
+[data-img="sneakerbg"]{background-image:url(assets/sneakerbg.jpg);background-position:right top}
 [data-img="workspace"]{background-image:url(assets/workspace.jpg)}
 [data-img="portrait"]{background-image:url(assets/portrait.jpg);background-position:top center}
 [data-img="certificate"]{background-image:url(assets/certificate.jpg)}
@@ -131,9 +134,23 @@ a{color:inherit;text-decoration:none}
 .split-media{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line)}
 .small-note{color:var(--text-mute);font-size:.82rem;margin-top:16px}
 
+/* Full-bleed photographic background sections */
+.hasbg{position:relative;overflow:hidden}
+.hasbg .container{position:relative;z-index:2}
+.hasbg .split-inner{grid-template-columns:1fr;gap:0}
+.hasbg .split-text{max-width:560px}
+.sec-bg{position:absolute;inset:0;z-index:0}
+.sec-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--bg) 24%,rgba(10,10,11,.74) 46%,rgba(10,10,11,.28) 72%,transparent 100%)}
+.sec-bg::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(0deg,var(--bg) 2%,transparent 42%)}
+
 /* ============ VALUE CENTER ============ */
-.value-center{padding:90px 0;text-align:center;background:var(--bg-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.value-center{padding:110px 0;text-align:center;background:var(--bg-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .value-center h2{font-size:clamp(1.7rem,3.2vw,2.7rem);text-transform:uppercase;max-width:900px;margin:0 auto 34px}
+.value-center.hasbg{text-align:left}
+.value-center.hasbg .vc-text{max-width:620px}
+.value-center.hasbg h2{margin:0 0 30px}
 
 /* ============ SERVICES ============ */
 .section-title{font-size:clamp(1.9rem,3.6vw,3rem);text-transform:uppercase}
@@ -275,6 +292,8 @@ a{color:inherit;text-decoration:none}
   .cards-grid{grid-template-columns:1fr 1fr}
   .why-layout{grid-template-columns:1fr;gap:0}
   .why-visual{display:none}
+  .sec-bg::after{background:linear-gradient(90deg,var(--bg) 42%,rgba(10,10,11,.66) 74%,rgba(10,10,11,.35))}
+  .value-center.hasbg .vc-text{max-width:100%}
   .why-col:last-child .why-item{text-align:left}
   .audience-grid{grid-template-columns:repeat(2,1fr)}
   .cases-grid{grid-template-columns:1fr}
